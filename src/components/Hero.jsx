@@ -15,7 +15,8 @@ export default function Hero() {
           Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-red-600">David Shalshin</span>
         </h1>
         <p className="mt-2 max-w-xl text-base md:text-lg text-white/80">
-          Software Engineer focused on building fast, delightful products across web and cloud. I love crafting scalable systems, elegant UIs, and shipping features that matter.
+        Software Engineer pursuing my Bachelor's in Computer Science at the University of Florida.
+        I build reliable, scalable products with a sharp focus on user experience, turning complex problems into intuitive solutions.
         </p>
 
         {/* Socials */}

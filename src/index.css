@@ -24,7 +24,6 @@
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
 @layer utilities {
   .animate-in {
     animation-name: animateIn;

@@ -1,32 +1,38 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { Folder } from 'lucide-react';
 
 const projects = [
-  {
-    title: 'CodeQuest',
-    description:
-      'A low-latency chat app with end-to-end encryption, presence indicators, and message search. Built with WebSockets and a scalable backend.',
-    link: 'https://intro-swe-term-project.vercel.app/',
-    github: 'https://github.com/Eric-Zhang-Developer/Intro-SWE-Term-Project',
-    image: '/CodeQuestThumb.jpg',
-    tags: ['Next.js', 'React.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
-  },
   {
     title: 'StreamStack',
     description:
       'A Chrome extension that unifies watchlists across streaming platforms with a side panel, quick-add buttons, and search/filters. Available on the Chrome Web Store.',
     link: 'https://chromewebstore.google.com/detail/stream-stack/jgadophdmonnggpeknhjhopghlglhhch',
     github: 'https://github.com/emma-coronado/StreamStack',
-    image: '/StreamStackThumb.jpg',
+    video: '/StreamStackThumbVid.mp4',
     tags: ['JavaScript', 'Tailwind CSS', 'DaisyUI'],
+    dateRange: 'Sept 2025 - Oct 2025',
   },
   {
-    title: 'Coming Soon',
+    title: 'CodeQuest',
     description:
-      'Coming Soon.',
-    link: '#',
-    github: '#',
-    tags: ['???', '???', '???', '???'],
+      'A gamified coding platform with story-based challenges, instant feedback, hints, solutions, and attempt tracking. Earn streaks, XP, badges, and review progress on a dashboard.',
+    link: 'https://intro-swe-term-project.vercel.app/',
+    github: 'https://github.com/Eric-Zhang-Developer/Intro-SWE-Term-Project',
+    image: '/CodeQuestThumb.jpg',
+    tags: ['Next.js', 'React.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
+    dateRange: 'Aug 2025 - Present',
+  },
+
+  {
+    title: 'Gale-Shapley Visualizer',
+    description:
+      'Interactive visualizer of the Gale–Shapley stable matching algorithm with animated steps, speed control, and real-time results.',
+    link: 'https://github.com/dshal20/Gale-Shapley-Visualization',
+    github: 'https://github.com/dshal20/Gale-Shapley-Visualization',
+    video: '/GSThumbVid.mp4',
+    tags: ['Visx', 'Framer Motion', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    dateRange: 'Sept 2025 - Oct 2025',
   },
 ];
 
@@ -41,7 +47,8 @@ export default function Projects() {
     <section id="projects" className="relative w-full bg-black py-8 text-white">
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex items-end justify-between gap-6">
-          <div>
+          <div className="flex items-center gap-3">
+            <span className="rounded-md bg-rose-500/10 p-2 border border-rose-500/20"><Folder className="text-rose-300" size={18} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Featured Projects</h2>
           </div>
         </div>
@@ -53,22 +60,35 @@ export default function Projects() {
               className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex flex-col"
             >
               <div className={`relative aspect-[16/10] overflow-hidden`}>                
-                {p.image ? (
+                {p.video ? (
+                  <video
+                    src={p.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
                   <img
                     src={p.image}
                     alt={`${p.title} preview`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
-                ) : (
-                  <div className={`h-full w-full bg-gradient-to-br ${gradients[idx % gradients.length]}`}></div>
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.15),transparent_40%)]" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/0" />
               </div>
               <div className="p-4 flex-1 flex flex-col">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
+                  <div>
+                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                    {p.dateRange && (
+                      <p className="text-xs text-white/50 mt-1">{p.dateRange}</p>
+                    )}
+                  </div>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => { if (p.link) window.open(p.link, '_blank', 'noopener,noreferrer'); }}
