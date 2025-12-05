@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-sans: 'Berkeley Mono Variable', monospace;
+    --font-geist: 'Berkeley Mono Variable', monospace;
+    --font-geist-mono: 'Berkeley Mono Variable', monospace;
+    --font-mona: 'Berkeley Mono Variable', monospace;
+    --font-ibm-plex: 'Berkeley Mono Variable', monospace;
+    --font-manrope: 'Berkeley Mono Variable', monospace;
   }
 
   html {
