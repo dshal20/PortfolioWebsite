@@ -1,8 +1,19 @@
 import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Trophy } from 'lucide-react';
 import { Folder } from 'lucide-react';
 
 const projects = [
+  {
+    title: 'StudyVerse',
+    description:
+      'A real-time, multiplayer virtual campus with built-in voice chat that makes studying feel shared through presence, movement, and casual social interaction.',
+    link: 'https://swamphacks-xi-project.vercel.app/',
+    github: 'https://github.com/dshal20/StudyVerse',
+    video: '/StudyVerseThumb.mp4',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Vercel'],
+    dateRange: 'Jan 2025 - Swamphacks',
+    award: '1st Place — Swamphacks (Creative Media track)',
+  },
   {
     title: 'StreamStack',
     description:
@@ -54,69 +65,85 @@ export default function Projects() {
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, idx) => (
-            <div
-              key={p.title}
-              className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex flex-col"
-            >
-              <div className={`relative aspect-[16/10] overflow-hidden`}>                
-                {p.video ? (
-                  <video
-                    src={p.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                ) : (
-                  <img
-                    src={p.image}
-                    alt={`${p.title} preview`}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                )}
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.15),transparent_40%)]" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/0" />
-              </div>
-              <div className="p-4 flex-1 flex flex-col">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-semibold">{p.title}</h3>
-                    {p.dateRange && (
-                      <p className="text-xs text-white/50 mt-1">{p.dateRange}</p>
-                    )}
+          {[...projects, { placeholder: true, id: 'placeholder-1' }, { placeholder: true, id: 'placeholder-2' }].map((item) => {
+            if (item.placeholder) {
+              return <div key={item.id} className="min-h-0" aria-hidden />;
+            }
+            const p = item;
+            return (
+              <div
+                key={p.title}
+                className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex flex-col"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  {p.video ? (
+                    <video
+                      src={p.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={p.image}
+                      alt={`${p.title} preview`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.15),transparent_40%)]" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/0" />
+                </div>
+                <div className="p-4 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-lg font-semibold">{p.title}</h3>
+                      {p.dateRange && (
+                        <p className="text-xs text-white/50 mt-1">{p.dateRange}</p>
+                      )}
+                      {p.award && (
+                        <p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-rose-300">
+                          <Trophy className="h-3.5 w-3.5 shrink-0 text-rose-400" strokeWidth={2.25} />
+                          <span>{p.award}</span>
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {p.link && (
+                        <button
+                          onClick={() => window.open(p.link, '_blank', 'noopener,noreferrer')}
+                          className="p-0 m-0 bg-transparent border-0"
+                          aria-label="Open Live"
+                        >
+                          <ExternalLink size={18} className="text-white/60 group-hover:text-white" />
+                        </button>
+                      )}
+                      {p.github && (
+                        <button
+                          onClick={() => window.open(p.github, '_blank', 'noopener,noreferrer')}
+                          className="rounded-md border border-white/15 bg-white/5 hover:bg-white/10 transition-colors p-1.5"
+                          aria-label="Open GitHub"
+                        >
+                          <Github size={16} className="text-white/70" />
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => { if (p.link) window.open(p.link, '_blank', 'noopener,noreferrer'); }}
-                      className="p-0 m-0 bg-transparent border-0"
-                      aria-label="Open Live"
-                    >
-                      <ExternalLink size={18} className="text-white/60 group-hover:text-white" />
-                    </button>
-                    <button
-                      onClick={() => { if (p.github) window.open(p.github, '_blank', 'noopener,noreferrer'); }}
-                      className="rounded-md border border-white/15 bg-white/5 hover:bg-white/10 transition-colors p-1.5"
-                      aria-label="Open GitHub"
-                    >
-                      <Github size={16} className="text-white/70" />
-                    </button>
+                  <p className="mt-2 text-sm text-white/70 flex-1">{p.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <span key={t} className="text-xs rounded-full bg-red-500/10 text-red-300 border border-red-500/20 px-2 py-1">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <p className="mt-2 text-sm text-white/70 flex-1">{p.description}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span key={t} className="text-xs rounded-full bg-red-500/10 text-red-300 border border-red-500/20 px-2 py-1">
-                      {t}
-                    </span>
-                  ))}
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
