@@ -32,7 +32,7 @@ const projects = [
     github: 'https://github.com/Eric-Zhang-Developer/Intro-SWE-Term-Project',
     image: '/CodeQuestThumb.jpg',
     tags: ['Next.js', 'React.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
-    dateRange: 'Aug 2025 - Present',
+    dateRange: 'Aug 2025 - Nov 2025',
   },
 
   {
@@ -44,6 +44,13 @@ const projects = [
     video: '/GSThumbVid.mp4',
     tags: ['Visx', 'Framer Motion', 'Next.js', 'TypeScript', 'Tailwind CSS'],
     dateRange: 'Sept 2025 - Oct 2025',
+  },
+  {
+    title: 'NightGuard',
+    description: 'The future of venue security. Real-time alerts, shared intel.',
+    link: '',
+    github: '',
+    tags: ['Coming soon'],
   },
 ];
 
@@ -86,13 +93,17 @@ export default function Projects() {
                       preload="auto"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
-                  ) : (
+                  ) : p.image ? (
                     <img
                       src={p.image}
                       alt={`${p.title} preview`}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
+                  ) : (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/5 text-white/40 text-sm font-medium">
+                      Coming soon
+                    </div>
                   )}
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.15),transparent_40%)]" />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/0" />
